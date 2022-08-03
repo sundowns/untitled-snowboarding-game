@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://ctbui360ohj2d"]
 
 [ext_resource type="Script" path="res://world/Player.gd" id="1_b3pqa"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1l54n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u5bfu"]
 size = Vector3(0.5, 0.1, 2.5)
@@ -10,25 +8,32 @@ size = Vector3(0.5, 0.1, 2.5)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijylw"]
 radius = 0.35
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1l54n"]
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0523599
+collision/safe_margin = 0.01
 script = ExtResource("1_b3pqa")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_1l54n")
+[node name="MeshAnchor" type="Node3D" parent="."]
 
-[node name="BoardMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+[node name="BoardMesh" type="MeshInstance3D" parent="MeshAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.904306, 0)
 mesh = SubResource("BoxMesh_u5bfu")
+skeleton = NodePath("../..")
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="PlayerMesh" type="MeshInstance3D" parent="MeshAnchor"]
 mesh = SubResource("CapsuleMesh_ijylw")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_1l54n")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 3)
 
 [node name="FloorCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+target_position = Vector3(0, -0.3, 0)
