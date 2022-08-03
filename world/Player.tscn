@@ -32,7 +32,7 @@ skeleton = NodePath("../..")
 shape = SubResource("CapsuleShape3D_1l54n")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 3)
+transform = Transform3D(-0.708241, 0.499196, -0.499197, 0, 0.707107, 0.707107, 0.70597, 0.500802, -0.500802, -2.42898, 2.6737, -3.46391)
 
 [node name="FloorCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)

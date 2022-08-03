@@ -2,7 +2,6 @@ extends CharacterBody3D
 class_name Player
 
 @onready var floor_cast: RayCast3D = $FloorCast
-@onready var mesh_anchor: Node3D = $MeshAnchor
 
 @export var turning_speed: float = 5.0
 
@@ -36,7 +35,7 @@ func orient_down_slope():
 		var collision_normal = floor_cast.get_collision_normal()
 		if collision_normal != Vector3.ZERO:
 			var xform = align_with_y(global_transform, collision_normal)
-			mesh_anchor.global_transform = global_transform.interpolate_with(xform, 0.2)
+			global_transform = global_transform.interpolate_with(xform, 0.2)
 
 # Given an up direction (y), align the transform so that its local up vector matches y
 func align_with_y(transform: Transform3D, new_y: Vector3):
