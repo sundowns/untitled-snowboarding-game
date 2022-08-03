@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd71hhf0af1iv"]
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://world/Player.gd" id="1_b3pqa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1l54n"]
 
@@ -9,6 +11,10 @@ size = Vector3(0.5, 0.1, 2.5)
 radius = 0.35
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+motion_mode = 1
+wall_min_slide_angle = 0.0523599
+script = ExtResource("1_b3pqa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -21,3 +27,8 @@ mesh = SubResource("BoxMesh_u5bfu")
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_ijylw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 3)
+
+[node name="FloorCast" type="RayCast3D" parent="."]

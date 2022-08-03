@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://867f4oaecwsu"]
+
+[ext_resource type="Script" path="res://ui/HUD.gd" id="1_fmj62"]
+[ext_resource type="Script" path="res://ui/DebugOverlay.gd" id="2_rbo5j"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_fmj62")
+
+[node name="DebugOverlay" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_rbo5j")
+
+[node name="Label" type="Label" parent="DebugOverlay"]
+offset_right = 40.0
+offset_bottom = 23.0
