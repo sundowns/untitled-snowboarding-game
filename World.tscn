@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf56462sokva8"]
+
+[ext_resource type="PackedScene" uid="uid://bd71hhf0af1iv" path="res://Player.tscn" id="1_jgxc5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nmvim"]
+size = Vector2(40, 40)
+
+[node name="World" type="Node3D"]
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+mesh = SubResource("PlaneMesh_nmvim")
+skeleton = NodePath("../..")
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("1_jgxc5")]
+
+[node name="PlayerSpawnPoint" type="Position3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
