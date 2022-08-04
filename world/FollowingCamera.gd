@@ -8,6 +8,6 @@ var target: Node3D = null
 func set_target(new_target: Node3D):
 	target = new_target
 
-func _process(delta):
+func _process(_delta):
 	if target:
 		look_at_from_position(target.global_position + offset, target.global_position)

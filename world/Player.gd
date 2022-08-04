@@ -1,6 +1,10 @@
 extends CharacterBody3D
 class_name Player
 
+## Some refs:
+##	https://www.youtube.com/watch?v=ko0OznC8Lws
+## 	https://github.com/soullesseol/snowboard_controller/blob/master/PlayerController.cs
+
 @onready var floor_cast: RayCast3D = $FloorCast
 
 @export var turning_speed: float = 5.0
@@ -45,11 +49,11 @@ func orient_down_slope():
 			global_transform = global_transform.interpolate_with(xform, 0.2)
 
 # Given an up direction (y), align the transform so that its local up vector matches y
-func align_with_y(transform: Transform3D, new_y: Vector3):
-	transform.basis.y = new_y
-	transform.basis.x = -transform.basis.z.cross(new_y)
-	transform.basis = transform.basis.orthonormalized()
-	return transform
+func align_with_y(xform: Transform3D, new_y: Vector3):
+	xform.basis.y = new_y
+	xform.basis.x = -xform.basis.z.cross(new_y)
+	xform.basis = xform.basis.orthonormalized()
+	return xform
 
 func limit_velocity():
 	if velocity.length() > terminal_velocity:
