@@ -12,8 +12,7 @@ radius = 0.35
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-motion_mode = 1
-wall_min_slide_angle = 0.0523599
+floor_stop_on_slope = false
 script = ExtResource("1_b3pqa")
 
 [node name="MeshAnchor" type="Node3D" parent="."]

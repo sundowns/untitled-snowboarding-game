@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" path="res://world/World.gd" id="1_6sqfj"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ftuaj"]
-margin = 0.01
-points = PackedVector3Array(-200, -100, -200, -200, -100, 200, -160.023, 100, -200, 200, -100, -200, 200, -100, 200, -160.023, 100, 200)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xsoj0"]
+size = Vector3(1000, 2, 300)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4jlr0"]
 
@@ -30,10 +29,9 @@ normal_enabled = true
 normal_scale = -16.0
 normal_texture = SubResource("NoiseTexture_m1221")
 
-[sub_resource type="PrismMesh" id="PrismMesh_wp5bl"]
+[sub_resource type="BoxMesh" id="BoxMesh_4v3d4"]
 material = SubResource("StandardMaterial3D_jovs5")
-left_to_right = 0.1
-size = Vector3(400, 200, 400)
+size = Vector3(1000, 2, 300)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_6sqfj")
@@ -41,17 +39,18 @@ script = ExtResource("1_6sqfj")
 [node name="Terrain" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_ftuaj")
+shape = SubResource("BoxShape3D_xsoj0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_wp5bl")
+mesh = SubResource("BoxMesh_4v3d4")
 
 [node name="PlayerSpawnPoint" type="Position3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 118.673, 145.757)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 135.673, 461.757)
 
 [node name="Entities" type="Node" parent="."]
 
