@@ -7,12 +7,15 @@ signal player_spawned(player)
 
 @onready var player_spawn_point: Position3D = $PlayerSpawnPoint
 @onready var entities: Node = $Entities
+@onready var camera: FollowingCamera = $Camera3D
 
 func initialise():
 	spawn_player()
 
-func spawn_player():
+func spawn_player(set_as_camera_target: bool = true):
 	var player: Player = player_scene.instantiate()
 	entities.add_child(player)
 	player.global_transform.origin = player_spawn_point.global_transform.origin
 	player_spawned.emit(player)
+	if set_as_camera_target:
+		camera.set_target(player)

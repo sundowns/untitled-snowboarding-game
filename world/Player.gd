@@ -4,19 +4,25 @@ class_name Player
 @onready var floor_cast: RayCast3D = $FloorCast
 
 @export var turning_speed: float = 5.0
+@export var forward_speed: float = 3.0
+@export var terminal_velocity: float = 100.0
+
+
+var heading: Vector3 = Vector3.FORWARD
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _physics_process(delta: float):
-	# Add the gravity.
+	print(floor_cast.is_colliding())
 	if is_on_floor() or floor_cast.is_colliding():
 		grounded_slope_movement(delta)
-	else:
-		aerial_movement(delta)
+	apply_gravity(delta)
+	limit_velocity()
 	move_and_slide()
 
-func aerial_movement(delta: float):
+func apply_gravity(delta: float):
+	# Add the gravity.
 	velocity.y -= gravity * delta
 
 func grounded_slope_movement(_delta: float):
@@ -28,6 +34,7 @@ func grounded_slope_movement(_delta: float):
 		velocity.x = direction.x * turning_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, turning_speed)
+	velocity += transform.basis.z + (heading.normalized() * forward_speed)
 	orient_down_slope()
 
 func orient_down_slope():
@@ -43,3 +50,7 @@ func align_with_y(transform: Transform3D, new_y: Vector3):
 	transform.basis.x = -transform.basis.z.cross(new_y)
 	transform.basis = transform.basis.orthonormalized()
 	return transform
+
+func limit_velocity():
+	if velocity.length() > terminal_velocity:
+		velocity = velocity.normalized() * terminal_velocity

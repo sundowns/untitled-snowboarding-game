@@ -12,6 +12,9 @@ radius = 0.35
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
+motion_mode = 1
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0349066
 floor_stop_on_slope = false
 script = ExtResource("1_b3pqa")
 
@@ -29,9 +32,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_1l54n")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.708241, 0.499196, -0.499197, 0, 0.707107, 0.707107, 0.70597, 0.500802, -0.500802, -2.42898, 2.6737, -3.46391)
-
 [node name="FloorCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
-target_position = Vector3(0, -0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.721058, 0)
+target_position = Vector3(0, -0.5, 0)
