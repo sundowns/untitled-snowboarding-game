@@ -1,9 +1,6 @@
 extends CharacterBody3D
 class_name Player
 
-## Some refs:
-##	https://www.youtube.com/watch?v=ko0OznC8Lws
-## 	https://github.com/soullesseol/snowboard_controller/blob/master/PlayerController.cs
 
 @onready var floor_cast: RayCast3D = $FloorCast
 
@@ -38,7 +35,7 @@ func grounded_slope_movement(_delta: float):
 		velocity.x = direction.x * turning_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, turning_speed)
-	velocity += transform.basis.z + (heading.normalized() * forward_speed) # This heading is probably not downhill atm? idk
+	velocity += transform.basis.z + (heading.normalized() * forward_speed) # This heading is probably not downhill atm? idk?
 	orient_down_slope()
 
 func orient_down_slope():
