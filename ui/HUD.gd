@@ -5,3 +5,4 @@ class_name HudLayer
 
 func register_player(player: Player):
 	debug_overlay.register_field(player, "velocity", "p_vel")
+	debug_overlay.register_field(player, "global_position", "p_pos")

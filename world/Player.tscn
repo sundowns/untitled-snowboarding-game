@@ -14,7 +14,6 @@ radius = 0.35
 collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0523599
-collision/safe_margin = 0.01
 script = ExtResource("1_b3pqa")
 
 [node name="MeshAnchor" type="Node3D" parent="."]
