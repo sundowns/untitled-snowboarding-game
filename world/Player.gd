@@ -3,9 +3,17 @@ class_name Player
 
 onready var floor_cast: RayCast = $FloorCast
 onready var mesh_anchor: Spatial = $MeshAnchor
+onready var player_mesh: Spatial = $MeshAnchor/humanoid
 
 export(float) var forward_speed: float = 10.0
 export(float) var terminal_velocity: float = 50.0
+
+enum BoardingStyle {
+	REGULAR = 0,
+	GOOFY = 1
+}
+
+export(BoardingStyle) var boarding_style = BoardingStyle.REGULAR
 
 export(Resource) var backside_vector
 export(Resource) var frontside_vector 
@@ -15,6 +23,13 @@ var heading: Vector3 = Vector3.FORWARD
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _ready():
+	match boarding_style:
+		BoardingStyle.REGULAR:
+			player_mesh.rotation_degrees = Vector3(0, 90, 0)
+		BoardingStyle.GOOFY:
+			player_mesh.rotation_degrees = Vector3(0, -90, 0)
 
 func _physics_process(delta: float):
 	if is_on_floor() or floor_cast.is_colliding():

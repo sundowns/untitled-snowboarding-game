@@ -2,6 +2,7 @@
 
 [ext_resource path="res://world/Player.gd" type="Script" id=1]
 [ext_resource path="res://addons/vector_resource/vector_resource.gd" type="Script" id=2]
+[ext_resource path="res://models/humanoid.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 2 )
@@ -24,11 +25,6 @@ max_length = 64.0
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
 
-[sub_resource type="CapsuleMesh" id=2]
-radius = 0.7
-radial_segments = 32
-rings = 4
-
 [sub_resource type="CubeMesh" id=3]
 size = Vector3( 2.5, 0.1, 0.6 )
 
@@ -50,9 +46,8 @@ shape = SubResource( 1 )
 
 [node name="MeshAnchor" type="Spatial" parent="."]
 
-[node name="PlayerMesh" type="MeshInstance" parent="MeshAnchor"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 2 )
+[node name="humanoid" parent="MeshAnchor" instance=ExtResource( 3 )]
+transform = Transform( -2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 0, -1.05846, 0 )
 
 [node name="BoardMesh" type="MeshInstance" parent="MeshAnchor"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.11692, 0 )
