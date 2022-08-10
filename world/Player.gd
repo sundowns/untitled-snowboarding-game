@@ -3,10 +3,12 @@ class_name Player
 
 onready var floor_cast: RayCast = $FloorCast
 
-export(float) var turning_speed: float = 5.0
-export(float) var forward_speed: float = 3.0
+#export(float) var turning_speed: float = 5.0
+export(float) var forward_speed: float = 10.0
 export(float) var terminal_velocity: float = 100.0
 
+export(Resource) var backside_vector
+export(Resource) var frontside_vector 
 
 var velocity: Vector3 = Vector3.ZERO
 var heading: Vector3 = Vector3.FORWARD
@@ -25,16 +27,18 @@ func apply_gravity(delta: float):
 	# Add the gravity.
 	velocity.y -= gravity * delta
 
-func grounded_slope_movement(_delta: float):
+func grounded_slope_movement(delta: float):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("turn_left", "turn_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
-	if direction:
-		velocity.x = direction.x * turning_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, turning_speed)
-#	velocity += transform.basis.z + (heading.normalized() * forward_speed) # This heading is probably not downhill atm? idk?
+	var left_right = Input.get_axis("turn_left", "turn_right")
+	var direction = Vector3(left_right, 0, 0).normalized() # local to player / heading
+	# Intentionally dont reset to forward, so we stay on an edge
+	if left_right < 0:
+		heading = backside_vector.xyz
+	elif left_right > 0:
+		heading = frontside_vector.xyz
+	var forward_heading_vector = (transform.basis * heading).normalized() * forward_speed * delta
+	velocity += forward_heading_vector
 	orient_down_slope()
 
 func orient_down_slope():

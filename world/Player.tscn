@@ -1,6 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://world/Player.gd" type="Script" id=1]
+[ext_resource path="res://addons/vector_resource/vector_resource.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 2 )
+value = Vector3( -32, -64, -48 )
+unit_value = Vector3( -0.371391, -0.742781, -0.557086 )
+snapped = true
+grid_step = 16.0
+normalized = true
+max_length = 64.0
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+value = Vector3( 32, -64, -48 )
+unit_value = Vector3( 0.371391, -0.742781, -0.557086 )
+snapped = true
+grid_step = 16.0
+normalized = true
+max_length = 64.0
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -22,6 +41,8 @@ albedo_color = Color( 1, 0.415686, 0.415686, 1 )
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 1 )
+backside_vector = SubResource( 6 )
+frontside_vector = SubResource( 7 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

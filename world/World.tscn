@@ -4,22 +4,22 @@
 [ext_resource path="res://world/World.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 50, 0.5, 150 )
+extents = Vector3( 50, 0.5, 500 )
 
 [sub_resource type="CubeMesh" id=2]
-size = Vector3( 100, 1, 300 )
+size = Vector3( 100, 1, 1000 )
 
 [sub_resource type="OpenSimplexNoise" id=4]
 
 [sub_resource type="NoiseTexture" id=5]
-width = 4096
-height = 4096
-seamless = true
+width = 8192
+height = 8192
 noise = SubResource( 4 )
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 albedo_texture = SubResource( 5 )
+uv1_scale = Vector3( 1, 10, 1 )
 
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
@@ -27,7 +27,7 @@ script = ExtResource( 2 )
 [node name="Terrain" type="Spatial" parent="."]
 
 [node name="PlayerSpawnPoint" type="Position3D" parent="Terrain"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 45.896, -124 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 131.996, -469.1 )
 
 [node name="StaticBody" type="StaticBody" parent="Terrain"]
 transform = Transform( 1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0 )
@@ -47,5 +47,6 @@ material/0 = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0 )
 
 [node name="FollowingCamera" type="Camera" parent="."]
+far = 1000.0
 script = ExtResource( 1 )
-offset = Vector3( 0, 6, -3 )
+offset = Vector3( 0, 5, -6 )

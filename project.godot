@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://world/Player.gd"
+}, {
+"base": "Resource",
+"class": "VectorResource",
+"language": "GDScript",
+"path": "res://addons/vector_resource/vector_resource.gd"
 } ]
 _global_script_class_icons={
 "DebugOverlay": "",
 "FollowingCamera": "",
 "GameWorld": "",
 "HudLayer": "",
-"Player": ""
+"Player": "",
+"VectorResource": ""
 }
 
 [application]
@@ -47,6 +53,14 @@ _global_script_class_icons={
 config/name="Untitled-snowboarder"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/vector_resource/plugin.cfg" )
+
+[global]
+
+gravity=false
 
 [gui]
 
@@ -73,6 +87,7 @@ turn_right={
 [physics]
 
 common/enable_pause_aware_picking=true
+3d/default_gravity=4.9
 
 [rendering]
 
