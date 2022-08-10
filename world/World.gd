@@ -15,7 +15,7 @@ func initialise():
 func spawn_player(set_as_camera_target: bool = true):
 	var player: Player = player_scene.instance()
 	entities.add_child(player)
-	player.global_transform.origin = player_spawn_point.global_transform.origin
+	player.global_transform = player_spawn_point.global_transform
 #	player_spawned.emit(player)
 	emit_signal("player_spawned", player)
 	if set_as_camera_target:

@@ -27,7 +27,7 @@ script = ExtResource( 2 )
 [node name="Terrain" type="Spatial" parent="."]
 
 [node name="PlayerSpawnPoint" type="Position3D" parent="Terrain"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 45.896, -124 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 45.896, -124 )
 
 [node name="StaticBody" type="StaticBody" parent="Terrain"]
 transform = Transform( 1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0 )
@@ -48,4 +48,4 @@ transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0
 
 [node name="FollowingCamera" type="Camera" parent="."]
 script = ExtResource( 1 )
-offset = Vector3( 5, 6, -3 )
+offset = Vector3( 0, 6, -3 )
