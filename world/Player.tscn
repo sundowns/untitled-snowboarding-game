@@ -5,8 +5,8 @@
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 2 )
-value = Vector3( -32, -64, -48 )
-unit_value = Vector3( -0.371391, -0.742781, -0.557086 )
+value = Vector3( -64, -64, 0 )
+unit_value = Vector3( -0.707107, -0.707107, 0 )
 snapped = true
 grid_step = 16.0
 normalized = true
@@ -14,8 +14,8 @@ max_length = 64.0
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 2 )
-value = Vector3( 32, -64, -48 )
-unit_value = Vector3( 0.371391, -0.742781, -0.557086 )
+value = Vector3( 64, -64, 0 )
+unit_value = Vector3( 0.707107, -0.707107, 0 )
 snapped = true
 grid_step = 16.0
 normalized = true
